@@ -13,6 +13,12 @@ describe('Fetch Answer Comments', () => {
   })
 
   it('should be able to fetch answer comment', async () => {
+    for (let i = 1; i <= 3; i++) {
+      await inMemoryAnswerCommentsRepository.create(
+        makeAnswerComment({ answerId: new UniqueEntityId('answer-1') }),
+      )
+    }
+    /* 
     await inMemoryAnswerCommentsRepository.create(
       makeAnswerComment({ answerId: new UniqueEntityId('answer-1') }),
     )
@@ -24,7 +30,7 @@ describe('Fetch Answer Comments', () => {
     await inMemoryAnswerCommentsRepository.create(
       makeAnswerComment({ answerId: new UniqueEntityId('answer-1') }),
     )
-
+    */
     const result = await sut.execute({
       answerId: 'answer-1',
       page: 1,
