@@ -8,7 +8,7 @@ const prisma = new PrismaClient()
 
 function generateUniqueDatabaseUrl(schemaId: string) {
   if (!process.env.DATABASE_URL) {
-    throw new Error('Please ŕovider a DATABASE_URL enviroment variable')
+    throw new Error('Please provider a DATABASE_URL enviroment variable')
   }
 
   const url = new URL(process.env.DATABASE_URL)
