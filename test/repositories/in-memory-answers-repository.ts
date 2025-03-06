@@ -8,7 +8,7 @@ export class InMemoryAnswersRepository implements AnswersRepository {
   public items: Answer[] = []
 
   constructor(
-    private answerAttachemntsRepository: AnswerAttachmentsRepository,
+    private answerAttachmentsRepository: AnswerAttachmentsRepository,
   ) {}
 
   async findById(id: string) {
@@ -48,6 +48,6 @@ export class InMemoryAnswersRepository implements AnswersRepository {
 
     this.items.splice(itemIndex, 1)
 
-    this.answerAttachemntsRepository.deleteManyByAnswerId(answer.id.toString())
+    this.answerAttachmentsRepository.deleteManyByAnswerId(answer.id.toString())
   }
 }
