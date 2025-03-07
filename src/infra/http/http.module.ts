@@ -20,6 +20,7 @@ import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/g
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/register-student'
 import { CrypographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
+import { StorageModule } from '../storage/storage.module'
 import { AnswerQuestionController } from './controllers/answer-question.controller'
 import { AuthenticateController } from './controllers/authenticate.controller'
 import { ChooseQuestionBestAnswerController } from './controllers/choose-question-best-answer.controller'
@@ -39,9 +40,10 @@ import { FetchQuestionCommentsController } from './controllers/fetch-question-co
 import { FetchRecentQuestionsController } from './controllers/fetch-recent-questions.controller'
 import { GetQuestionBySlugController } from './controllers/get-question-by-slug.controller'
 import { UploadAttachmentController } from './controllers/upload-attachment.controller'
+import { UploadAndCreateAttachmentsUseCase } from '@/domain/forum/application/use-cases/upload-and-create-attachment'
 
 @Module({
-  imports: [DatabaseModule, CrypographyModule],
+  imports: [DatabaseModule, CrypographyModule, StorageModule],
   controllers: [
     CreateAccountController,
     AuthenticateController,
@@ -82,6 +84,7 @@ import { UploadAttachmentController } from './controllers/upload-attachment.cont
     DeleteAnswerCommentUseCase,
     FetchQuestionCommentsUseCase,
     FetchAnswerCommentsUseCase,
+    UploadAndCreateAttachmentsUseCase,
   ],
 })
 export class HttpModule {}
