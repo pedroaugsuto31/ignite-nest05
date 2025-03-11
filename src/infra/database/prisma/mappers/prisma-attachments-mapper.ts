@@ -3,12 +3,12 @@ import { Prisma } from '@prisma/client'
 
 export class PrismaAttachmentMapper {
   static toPrisma(
-    attachemnt: Attachment,
+    attachment: Attachment,
   ): Prisma.AttachmentUncheckedCreateInput {
     return {
-      id: attachemnt.id.toString(),
-      title: attachemnt.title,
-      url: attachemnt.url,
+      id: attachment.id.toString(),
+      title: attachment.title,
+      url: attachment.url,
     }
   }
 }
