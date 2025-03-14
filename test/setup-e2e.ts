@@ -1,11 +1,11 @@
 import { config } from 'dotenv'
 
-import { DomainEvents } from '@/core/events/domain-events'
-import { envSchema } from '@/infra/env/env'
 import { PrismaClient } from '@prisma/client'
-import { Redis } from 'ioredis'
-import { execSync } from 'node:child_process'
 import { randomUUID } from 'node:crypto'
+import { execSync } from 'node:child_process'
+import { DomainEvents } from '@/core/events/domain-events'
+import { Redis } from 'ioredis'
+import { envSchema } from '@/infra/env/env'
 
 config({ path: '.env', override: true })
 config({ path: '.env.test', override: true })
@@ -19,9 +19,9 @@ const redis = new Redis({
   db: env.REDIS_DB,
 })
 
-function generateUniqueDatabaseUrl(schemaId: string) {
+function generateUniqueDatabaseURL(schemaId: string) {
   if (!env.DATABASE_URL) {
-    throw new Error('Please provider a DATABASE_URL enviroment variable')
+    throw new Error('Please provider a DATABASE_URL environment variable')
   }
 
   const url = new URL(env.DATABASE_URL)
@@ -34,9 +34,9 @@ function generateUniqueDatabaseUrl(schemaId: string) {
 const schemaId = randomUUID()
 
 beforeAll(async () => {
-  const databaseURL = generateUniqueDatabaseUrl(schemaId)
+  const databaseURL = generateUniqueDatabaseURL(schemaId)
 
-  env.DATABASE_URL = databaseURL
+  process.env.DATABASE_URL = databaseURL
 
   DomainEvents.shouldRun = false
 
